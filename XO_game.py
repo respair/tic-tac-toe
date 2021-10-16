@@ -1,3 +1,4 @@
+"""game with the computer"""
 from tkinter import *
 import random
 
