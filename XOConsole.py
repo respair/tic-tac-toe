@@ -16,22 +16,24 @@ class XOConsole:
 
     def new_game(self):
         """start a new game or end it"""
-        answer = get_input("Хотите начать игру заново? Введите 'yes' или 'no'")
-        try:
-            if not answer:
-                raise ValueError('empty input')
-            if not isinstance(answer, str):
-                raise ValueError('incorrect input')
-        except ValueError:
-            print("Некорректный ответ: игра завершается..")
-            sys.exit()
-        if answer == "yes":
-            self.board = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-            self.sign = 'X'
-            self.main()
-        else:
-            print("Спасибо за игру!")
-            sys.exit()
+        check = 0
+        while check == 0:
+            answer = get_input("Хотите начать игру заново? Введите 'yes' или 'no': ")
+            try:
+                if not answer:
+                    raise ValueError('empty input')
+                if not isinstance(answer, str) or answer != "yes" or answer != "no":
+                    raise ValueError('incorrect input')
+            except ValueError:
+                print("Некорректный ответ: попробуйте снова.")
+            if answer == "yes":
+                check = 1
+                self.board = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+                self.sign = 'X'
+                self.main()
+            if answer == "no":
+                print("Спасибо за игру!")
+                sys.exit()
 
     def draw_board(self):
         """draw the field for the game"""
