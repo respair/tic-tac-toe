@@ -22,8 +22,6 @@ class XOConsole:
             try:
                 if not answer:
                     raise ValueError('empty input')
-                if not isinstance(answer, str):
-                    raise ValueError('incorrect input')
                 if answer != "yes" and answer != "no":
                     raise ValueError('incorrect input')
             except ValueError:
