@@ -144,11 +144,3 @@ class TestXOConsole(unittest.TestCase):
         """checking the call to the main function"""
         self.tictac.new_game()
         mock_main.assert_called_once()
-
-   # @patch('XOConsole.get_input', return_value='') #    @patch('XOConsole.sys.exit')
-   # @patch('sys.stdout', new_callable=io.StringIO)
-   # def test_new_game1(self, mock_stdout, mock_input):
-   #     self.tictac.new_game()
-   #    # self.assertRaises(SystemExit, self.tictac.new_game())
-   #   #  mock_exit.assert_called()
-   #     self.assertEqual(mock_stdout.getvalue(), "Некорректный ответ: игра завершается.\n")
