@@ -73,6 +73,38 @@ class TestXOConsole(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch('XOConsole.XOConsole.new_game')
+    def test_check_win_x1_str(self, mock_new_game, mock_stdout):
+        """check win of X"""
+        self.tictac.board = ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', '9']
+        self.tictac.check_win()
+        self.assertEqual(mock_stdout.getvalue(), "X is WINNER!\n")
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch('XOConsole.XOConsole.new_game')
+    def test_check_win_x2_str(self, mock_new_game, mock_stdout):
+        """checking the call to the new_game function"""
+        self.tictac.board = ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'O', '9']
+        self.tictac.check_win()
+        mock_new_game.assert_called_once()
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch('XOConsole.XOConsole.new_game')
+    def test_check_win_x1_diag(self, mock_new_game, mock_stdout):
+        """check win of X"""
+        self.tictac.board = ['X', '2', 'O', 'O', 'X', 'X', 'O', '8', 'X']
+        self.tictac.check_win()
+        self.assertEqual(mock_stdout.getvalue(), "X is WINNER!\n")
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch('XOConsole.XOConsole.new_game')
+    def test_check_win_x2_diag(self, mock_new_game, mock_stdout):
+        """checking the call to the new_game function"""
+        self.tictac.board = ['X', '2', 'O', 'O', 'X', 'X', 'O', '8', 'X']
+        self.tictac.check_win()
+        mock_new_game.assert_called_once()
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch('XOConsole.XOConsole.new_game')
     def test_check_win_o1(self, mock_new_game, mock_stdout):
         """check win of O"""
         self.tictac.board = ['O', 'O', 'O', 'X', 'X', 'O', 'X', '8', '9']
